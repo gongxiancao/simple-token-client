@@ -1,0 +1,30 @@
+{
+  "name": "simple-token-client",
+  "version": "0.0.1",
+  "description": "get token and re-new token when expired",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gongxiancao/simple-token-client.git"
+  },
+  "author": "GongXian Cao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gongxiancao/simple-token-client/issues"
+  },
+  "homepage": "https://github.com/gongxiancao/simple-token-client",
+  "keywords": [
+    "token",
+    "simple",
+    "client",
+    "renew",
+    "auth",
+    "expired"
+  ],
+  "dependencies": {
+    "request": "^2.69.0"
+  }
+}
