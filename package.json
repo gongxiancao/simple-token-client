@@ -1,6 +1,6 @@
 {
   "name": "simple-token-client",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "get token and re-new token when expired",
   "main": "index.js",
   "scripts": {
