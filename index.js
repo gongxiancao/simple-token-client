@@ -11,14 +11,16 @@ function SimpleTokenClient (config) {
 }
 
 SimpleTokenClient.prototype._requestToken = function (done) {
+  var requestBody = this.config.createRequestBody ? this.config.createRequestBody() : {
+    clientKey: this.config.clientKey,
+    clientSecret: this.config.clientSecret
+  };
+
   var opts = {
     url: this.config.tokenEndpoint,
     method: 'POST',
     proxy: false,
-    json: {
-      clientKey: this.config.clientKey,
-      clientSecret: this.config.clientSecret
-    },
+    json: requestBody,
     followRedirect: false
   };
 
