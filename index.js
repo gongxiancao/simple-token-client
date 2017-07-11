@@ -30,7 +30,7 @@ SimpleTokenClient.prototype._requestToken = function (done) {
     }
 
     if(res.statusCode !== 200) {
-      return done(new Error('reponse status is ' + res.statusCode), body);
+      return done(new Error('reponse status is ' + res.statusCode + ', body=' + JSON.stringify(body)));
     }
     done(null, body);
   });
