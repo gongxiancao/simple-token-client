@@ -7,6 +7,7 @@ function SimpleTokenClient (config) {
   this.tokenExpiresAt = null;
   this.lastError = null;
   this.lastErrorValidBefore = null;
+  this.responseBody = null;
   this.pendingRequests = [];
 }
 
@@ -67,6 +68,7 @@ SimpleTokenClient.prototype.requestToken = function (done) {
         self.lastError = err;
         self.lastErrorValidBefore = new Date(new Date().getTime() + (self.config.retryIntervalAfterFailure || 60) * 1000);
       } else {
+        self.responseBody = result;
         self.accessToken = result.accessToken;
         self.tokenExpiresAt = new Date(new Date().getTime() + result.expiresIn * 1000 - 120 * 1000);
       }
