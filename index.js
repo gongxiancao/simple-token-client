@@ -4,7 +4,7 @@ var request = require('request');
 function SimpleTokenClient (config) {
   this.config = config;
   this.accessToken = null;
-  this.tokenExiresAt = null;
+  this.tokenExpiresAt = null;
   this.lastError = null;
   this.lastErrorValidBefore = null;
   this.pendingRequests = [];
@@ -68,7 +68,7 @@ SimpleTokenClient.prototype.requestToken = function (done) {
         self.lastErrorValidBefore = new Date(new Date().getTime() + (self.config.retryIntervalAfterFailure || 60) * 1000);
       } else {
         self.accessToken = result.accessToken;
-        self.tokenExiresAt = new Date(new Date().getTime() + result.expiresIn * 1000 - 120 * 1000);
+        self.tokenExpiresAt = new Date(new Date().getTime() + result.expiresIn * 1000 - 120 * 1000);
       }
 
       self.pendingRequests.forEach(function (done) {
@@ -81,7 +81,7 @@ SimpleTokenClient.prototype.requestToken = function (done) {
 };
 
 SimpleTokenClient.prototype.getToken = function (done) {
-  if(!this.tokenExiresAt || new Date() > this.tokenExiresAt) {
+  if(!this.tokenExpiresAt || new Date() > this.tokenExpiresAt) {
     return this.requestToken(done);
   }
   done(null, this.accessToken);
